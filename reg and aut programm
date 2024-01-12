@@ -1,0 +1,98 @@
+#Programm authenticator + reg
+
+#first loop for reg or aut 
+while True:
+
+    #a variable of text-print is entered and a message is displayed
+    text = "Hello! Do you wanna reg?"
+    print ("| " + text + " |")
+    ans1 = input()
+
+    #variables for data
+    password = ""
+    login = ""
+    fname = ""
+    lname = ""
+    age = ""
+    #boolen variable for future working-code
+    cancel = False
+
+    #next loop for reg
+    while True:
+
+        #conditional statement for checking a input
+        if ans1 == "Yes" or ans1 == "yes" or ans1 == "yep" or ans1 == "y" or ans1 == "ye":
+            #loop for first name
+            while True:
+                print("Okay, please, write your first name: ")
+                fname = input()
+                #checking for string first name
+                if fname.isdigit():
+                    print('Incorrect value, please enter your name again.\n')
+                    continue
+                else:
+                    break
+            
+            #loop for last name
+            while True:
+                print("Please, write your last name: ")
+                lname = input()
+                #checking for string last name
+                if lname.isdigit():
+                    print('Incorrect value, please enter your name again.\n')
+                    continue
+                else:
+                    break
+
+            #loop for checking age
+            while True:
+                print("Please, write your age: ")
+                age = int(input())
+                if age <= 0:
+                    print("Ur age is uncorrect, please, write it again.\n")
+                    continue
+                elif age < 18:
+                    print("You're too small, bye.\n")
+                elif age >= 18:
+                    print("Welcome, " + fname.capitalize() + "!\n")
+                    break
+            
+            print("Okay, last. Enter your login and password: ")
+            login = input()
+            password = input()
+            break
+
+        #another cond. statement, if user input sb else
+        else:
+            print("Ok, see you later!")
+            #change value boolen-variable, which will allow code to working correct 
+            cancel = True
+            break
+    break
+print("\n")
+
+#cond. statement, if user input sb else and dont wont to reg
+if not cancel == True:
+    while True:         
+        print("Do you wanna log-in?")
+        ans2 = input()
+        if ans2.lower() in ["yes", "yep", "ye", "y"]:
+            print("Login: ")
+            log = input()
+            print("Password: ")
+            pas = input()
+            
+            #checking for correct
+            if log != login or pas != password:
+                print("Wrong login or password.")
+                continue
+            else:
+                print("Welcome, " + fname.capitalize() + "!\n")
+                break
+        else:
+            print("See you later!")
+            break
+
+else:
+    print("Goodbye!")
+    
